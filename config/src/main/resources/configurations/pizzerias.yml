@@ -1,0 +1,21 @@
+server:
+  port: 8091
+
+spring:
+  application:
+    name: pizzerias
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/pizzeria_db
+    database: pizzeria_db
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.ogm.datastore.mongodb.MongoDBDatastoreProvider
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+      routes:
+        - id: users
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/auth/**
+        - id: pizzerias
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/pizzeria/**
+          filters:
+            - name: JwtTokenValidator
+
+#Security Configuration
+security:
+  jwt:
+    key:
+      private: 3e0b6328a27101d2681290ed145b07c63882dbdb5bb73b8c2f207aca063e5aa4
+    user:
+      generator: AUTH0JWT

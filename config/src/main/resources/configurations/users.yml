@@ -1,0 +1,31 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: users
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pizzeria_db
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+#Security Configuration
+security:
+  jwt:
+    key:
+      private: 3e0b6328a27101d2681290ed145b07c63882dbdb5bb73b8c2f207aca063e5aa4
+    user:
+      generator: AUTH0JWT
